@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    {% if title %}
+    <title>app-{{title}}</title>
+    {% else %}
+    <title>Legacy Data Locker</title>
+    {% endif %}
+
+    <style>
+        .main-container {
+            max-width: 100vw;
+            height: 90vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 2.5px solid black;
+            border-radius: 15px;
+            margin: 10px 10px 10px;
+            background-color: black;
+        }
+
+        .center {
+            margin: 0px 20px 0px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #signup-position {
+            transform: translate(0%, -5.5%);
+        }
+
+        .notify {
+            margin-left: 10px !important;
+            margin-right: 10px !important;
+            border-radius: 15px;
+        }
+
+        /* // CSS overrides: later defined css style applies in browsers that support CSS spec */
+
+        .ks-page-header {
+            background: #000000;
+            /* fallback for old browsers */
+            background: radial-gradient(circle at center,
+                    rgba(0, 0, 0, 0.8),
+                    rgba(0, 0, 0, 0.8),
+                    rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0)),
+                url("https://i.pinimg.com/originals/f4/52/a2/f452a2f4b634b3011e065da8eaf0a5c3.gif");
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+
+            display: flex;
+            height: 200px;
+            /* // for browsers that do not support flexbox -- CSS override */
+            height: 80vh;
+        }
+
+        .ks-page-title {
+            padding: 2em 0;
+            /* // added for browsers that do not support flexbox but do support height 100vh  -- CSS override */
+            margin: auto;
+        }
+    </style>
+    <script>
+        function hideDiv() {
+            document.getElementById("notifyDiv").style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+    {% extends "navbar.html" %} {% block content %} {% with messages =
+    get_flashed_messages(with_categories=true) %} {% if messages %} {% for
+    category, message in messages %}
+
+    <div class="notify notification is-{{ category }}" id="notifyDiv">
+        <button class="delete" onclick="hideDiv()"></button>
+        {{ message }}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+
+    <header class="container-fluid ks-page-header">
+        <h1 class="display-4 text-white ks-page-title" style="color: white; font-size: 50px">
+            Legacy Data Locker
+        </h1>
+    </header>
+
+    <!-- Header-->
+    <header class="py-5">
+        <div class="container px-lg-5">
+            <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                <div class="m-4 m-lg-5">
+                    <h1 class="display-7 fw-bold">
+                        Secure your data after yourself, <br />
+                        for your family
+                    </h1>
+                    <p class="fs-5">
+                        Save your data and details here for free, get that any time even
+                        if you are not there. In the world of uncertainity, don't put your
+                        family in trouble after you. Your data is crucial and unreplaceble
+                        like you. At jointure ladyship an insisted so humanity he.
+                        Friendly bachelor entrance to on by.
+                    </p>
+                    <a class="btn btn-primary btn-lg" href="login">SignIn / SignUp</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" style="padding: 3%">
+        <div class="card" style="padding: 3%; margin-bottom: 3%">
+            <div class="card-body">
+                <h3 style="margin-bottom: 3%">Explore the Feature</h3>
+
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Access Passwords Anywhere</h5>
+                                <p class="card-text">
+                                    Easily access all of your saved passwords wherever you are
+                                    with mobile and web apps.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Generating Strong Passwords</h5>
+                                <p class="card-text">
+                                    Generate truly secure passwords with one click. Don’t worry
+                                    – LDL will remember them, so you don’t have to.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Secure Password Sharing</h5>
+                                <p class="card-text">
+                                    Assign user roles and item-level permissions for easy and
+                                    secure sharing.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Organizing and Tracking</h5>
+                                <p class="card-text">
+                                    Store, organize and track changes to your passwords
+                                    effortlessly with Tags, History Log and mass actions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Autofill and Autosave</h5>
+                                <p class="card-text">
+                                    Autofill your passwords with a couple of clicks in your
+                                    browser and mobile device.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Advanced Protection</h5>
+                                <p class="card-text">
+                                    End-to-end encryption, zero-knowledge proof and two-factor
+                                    authentication protects your sensitive information.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-8 fw-bolder text-white mb-2">
+                            Your security is at the heart of what we do.
+                        </h1>
+                        <p class="lead text-white-50 mb-4">
+                            End-to-end encryption, zero-knowledge proof and two-factor
+                            authentication protects your sensitive information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features section-->
+    <section class="py-5 border-bottom" id="features">
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                        <i class="bi bi-collection"></i>
+                    </div>
+                    <h2 class="h4 fw-bolder">2-factor authentication</h2>
+                    <p>
+                        Legacy Data Locker provide two factor authenitication, In case
+                        someone know your password, he is not able tp acces your data
+                        until you don't verify beforehand.
+                    </p>
+                </div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                        <i class="bi bi-building"></i>
+                    </div>
+                    <h2 class="h4 fw-bolder">Zero Knowledge Proof</h2>
+                    <p>
+                        As all your data is encrypted with latest teschnology so we don't
+                        have any knowledge of your data as everything is highly encrypted
+                        and secure by Python and Flask.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                        <i class="bi bi-toggles2"></i>
+                    </div>
+                    <h2 class="h4 fw-bolder">End to End Encryption</h2>
+                    <p>
+                        Each and every details entered by you is highly encrypted by end
+                        to end services and no one is able to see with login and
+                        authentication without the user and permission.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials section-->
+    <section class="py-5 border-bottom">
+        <div class="container px-5 my-5 px-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder">Customer testimonials</h2>
+                <p class="lead mb-0">Our customers love working with us</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <!-- Testimonial 1-->
+                    <div class="card mb-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                                </div>
+                                <div class="ms-4">
+                                    <p class="mb-1">
+                                        Thank you for putting together such a great product. We
+                                        loved working with you and the whole team, and we will be
+                                        recommending you to others!
+                                    </p>
+                                    <div class="small text-muted">- Client Name, Location</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2-->
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                                </div>
+                                <div class="ms-4">
+                                    <p class="mb-1">
+                                        The whole team was a huge help with putting things
+                                        together for our company and brand. We will be hiring them
+                                        again in the near future for additional work!
+                                    </p>
+                                    <div class="small text-muted">- Client Name, Location</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Content-->
+    <section class="pt-4">
+        <div class="container px-lg-5">
+            <!-- Page Features-->
+            <div class="row gx-lg-5">
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                <i class="bi bi-collection"></i>
+                            </div>
+                            <h2 class="fs-4 fw-bold">Security Notification</h2>
+                            <p class="mb-0">
+                                Be aware of any and all events that happen in you PassCamp
+                                account. Get notifications for password updates, contact
+                                invites and shared/unshared items.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                <i class="bi bi-cloud-download"></i>
+                            </div>
+                            <h2 class="fs-4 fw-bold">Passwords types</h2>
+                            <p class="mb-0">
+                                Different types of passwords? Different types to assign. Store
+                                your passwords based on whether they are for your sites, apps
+                                or WI-FI.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                <i class="bi bi-card-heading"></i>
+                            </div>
+                            <h2 class="fs-4 fw-bold">Admin console</h2>
+                            <p class="mb-0">
+                                Easily add new team members, manage their access and reset
+                                passwords – all with just a few clicks!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                <i class="bi bi-bootstrap"></i>
+                            </div>
+                            <h2 class="fs-4 fw-bold">Autosave</h2>
+                            <p class="mb-0">
+                                Autosave feature helps you to collect all your logins and
+                                passwords as you go.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                <i class="bi bi-code"></i>
+                            </div>
+                            <h2 class="fs-4 fw-bold">Password Import/Export</h2>
+                            <p class="mb-0">
+                                Switching from another password manager or want to secure all
+                                of your browser passwords
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                <i class="bi bi-patch-check"></i>
+                            </div>
+                            <h2 class="fs-4 fw-bold">Access from anywhere</h2>
+                            <p class="mb-0">
+                                Access wherever you are! Save, manage and share your passwords
+                                securely with your favorite browsers.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section-->
+    <section class="bg-light py-5">
+        <div class="container px-5 my-5 px-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <h2 class="fw-bolder">Get in touch</h2>
+                <p class="lead mb-0">We'd love to hear from you</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <!-- Name input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" type="text" placeholder="Enter your name..."
+                                data-sb-validations="required" />
+                            <label for="name">Full name</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">
+                                A name is required.
+                            </div>
+                        </div>
+                        <!-- Email address input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="email" type="email" placeholder="name@example.com"
+                                data-sb-validations="required,email" />
+                            <label for="email">Email address</label>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">
+                                An email is required.
+                            </div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">
+                                Email is not valid.
+                            </div>
+                        </div>
+                        <!-- Phone number input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
+                                data-sb-validations="required" />
+                            <label for="phone">Phone number</label>
+                            <div class="invalid-feedback" data-sb-feedback="phone:required">
+                                A phone number is required.
+                            </div>
+                        </div>
+                        <!-- Message input-->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" type="text"
+                                placeholder="Enter your message here..." style="height: 10rem"
+                                data-sb-validations="required"></textarea>
+                            <label for="message">Message</label>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">
+                                A message is required.
+                            </div>
+                        </div>
+                        <!-- Submit Button-->
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-5">
+            <p class="m-0 text-center text-white">
+                Made by Shweta Singh <br />
+                Copyright &copy; Legacy Data Locker 2022
+            </p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <!-- Core theme JS-->
+
+    {% endblock %}
+</body>
+
+</html>
