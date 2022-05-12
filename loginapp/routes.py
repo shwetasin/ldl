@@ -1,13 +1,15 @@
 import os
 # import secrets
 from os import urandom
-from PIL import Image
+import PIL.Image
 from flask import render_template, flash, redirect, url_for, request
 from loginapp import app, db, bcrypt, mail
 from loginapp.forms import RegistrationForm, LoginForm, AddPassword, RequestResetForm, ResetPasswordForm, UserAccountUpdate, UpdatePassword
 from loginapp.models import User, PasswordManager
 from flask_login import login_user, current_user, logout_user, login_required # this line is important. Allows us to login the user.
 from flask_mail import Message
+
+
 """
     File containes only routes
     Don't add any other things
@@ -21,8 +23,7 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    # below line does
-    # if current user is logged in and user tries to go to register page it will redirect to home.
+
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     # register page code goes here.
